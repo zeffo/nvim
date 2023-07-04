@@ -7,6 +7,12 @@ return {
     spell = false, -- sets vim.opt.spell
     signcolumn = "auto", -- sets vim.opt.signcolumn to auto
     wrap = false, -- sets vim.opt.wrap
+    shell = "powershell",
+    shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;',
+    shellredir = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode',
+		shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode',
+    shellquote = "",
+    shellxquote = ""
   },
   g = {
     mapleader = " ", -- sets vim.g.mapleader
