@@ -2,8 +2,7 @@
 return {
   opt = {
     -- set to true or false etc.
-    relativenumber = false, -- sets vim.opt.relativenumber (this looks disgusting)
-    number = true, -- sets vim.opt.number
+    relativenumber = true, -- sets vim.opt.relativenumber (this looks disgusting)
     spell = false, -- sets vim.opt.spell
     signcolumn = "auto", -- sets vim.opt.signcolumn to auto
     wrap = false, -- sets vim.opt.wrap
