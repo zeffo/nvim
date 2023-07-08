@@ -13,19 +13,8 @@ return {
           treesitter = true,
           notify = true,
           neotree = true,
-          indent_blankline = {
-              enabled = true,
-              colored_indent_levels = true,
-          },
 
         },
-        highlight_overrides = {
-          all = function(colors)
-            return {
-              -- Add highlight group overrides here
-            }
-            end
-        }
       })
     end
   },
