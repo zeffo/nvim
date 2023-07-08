@@ -12,7 +12,7 @@ return function(lvim)
 
   -- We only need this if we're on Windows...
 
-  if vim.fn.has("macunix") == 0 then
+  if vim.loop.os_uname().sysname ~= 'Linux' then
     lvim.opt.shell = "powershell"
     lvim.opt.shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;'
     lvim.opt.shellredir = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
