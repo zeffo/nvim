@@ -4,6 +4,7 @@ return function(lvim)
   lvim.opt.relativenumber = true
   lvim.opt.number = true
   lvim.opt.signcolumn = 'auto'
+  lvim.opt.shiftwidth = 4
   lvim.g.mapleader = " "
   lvim.g.cmp_enabled = true
   lvim.g.diagnostics_mode = 3

@@ -20,11 +20,8 @@ return {
   },
   {
     "rcarriga/nvim-notify",
-    event="BufRead",
-    config = function()
-      require("notify").setup({
-        background_color = "#000000"
-      })
+    opts = function(_, opts)
+      opts.background_colour = "#000000"
     end
   },
   {
