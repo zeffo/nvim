@@ -43,4 +43,10 @@ return {
       }
     end,
   },
+  {
+    "mfussenegger/nvim-jdtls",
+    config = function ()
+      require("jdtls")
+    end
+  }
 }
