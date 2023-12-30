@@ -2,6 +2,8 @@
 
 return function(lvim) 
   lvim.opt.relativenumber = true
+  lvim.opt.foldcolumn = "0"
+  lvim.opt.showtabline = 0
   lvim.opt.number = true
   lvim.opt.signcolumn = 'auto'
   lvim.opt.shiftwidth = 4
