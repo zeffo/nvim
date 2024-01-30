@@ -12,7 +12,7 @@ return {
           mason = true,
           treesitter = true,
           notify = true,
-          neotree = true,
+          -- neotree = true,
         },
       })
     end
@@ -53,7 +53,7 @@ return {
           " ██║  ██║██║ ╚═╝ ██║██║  ██║██║ ╚████║ ",
           " ╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝ ",
           "                                       ",
-          "                         ♥             ",
+          "                                      ",
           "                /\\_/\\                ",
           "                ( o.o )                ",
           "                 > ^ <                 ",
@@ -85,58 +85,26 @@ return {
   },
   {
     "rebelot/heirline.nvim",
-    enabled = true 
+    opts = function(_, opts)
+      local status = require("astronvim.utils.status")
+      opts.statusline = { -- statusline
+        hl = { fg = "fg", bg = "bg"},
+        status.component.mode { mode_text = { padding = { left = 1, right = 1 } } }, -- add the mode text
+        status.component.git_branch(),
+        status.component.file_info { filetype = {}, filename = false, file_modified = false },
+        status.component.git_diff(),
+        status.component.diagnostics(),
+        status.component.fill(),
+        status.component.cmd_info(),
+        status.component.fill(),
+        status.component.lsp(),
+        status.component.treesitter(),
+        status.component.nav(),
+        -- remove the 2nd mode indicator on the right
+      }
+
+      -- return the final configuration table
+      return opts
+    end,
   },
-  -- {
-  -- "nvim-lualine/lualine.nvim",
-  -- event = "BufEnter",
-  -- config = function()
-  --
-  --   local catpcn = require"lualine.themes.catppuccin"
-  --   catpcn.normal.a.bg = '#cba6f7'
-  --   catpcn.normal.b.fg = '#b4befe'
-  --   catpcn.insert.a.bg = '#f5c2e7'
-  --   catpcn.insert.b.fg = '#cba6f7'
-  --   catpcn.visual.a.bg = '#a6e3a1'
-  --   catpcn.visual.b.fg = '#94e2d5'
-  --   require("lualine").setup {
-	 --    options = {
-		--     icons_enabled = true,
-		--     theme = catpcn,
-  --       section_separators = { left = '', right = '' },
-  --       component_separators = { left = '', right = '' },
-		--     disabled_filetypes = { 
-		--       tabline = {'neo-tree', 'NvimTree' }
-		--     },
-		--     extensions = { 'neo-tree', 'lazy', 'mason' },
-		--     always_divide_middle = true,
-		--     globalstatus = true,
-	 --    },
-	 --    sections = {
-		--     lualine_a = { "mode" },
-		--     lualine_b = { "branch", "diff", "diagnostics" },
-		--     lualine_c = { "filename" },
-		--     lualine_x = { "filetype" },
-		--     lualine_y = { "progress" },
-		--     lualine_z = { "location" },
-	 --    },
-	 --    inactive_sections = {
-		--     lualine_a = {},
-		--     lualine_b = {},
-		--     lualine_c = {},
-		--     lualine_x = {},
-		--     lualine_y = {},
-		--     lualine_z = {},
-	 --    },
-  --     tabline = {
-  --       lualine_a = {'buffers'},
-  --       lualine_b = {'branch'},
-  --       lualine_c = {'filename'},
-  --       lualine_x = {},
-  --       lualine_y = {},
-  --       lualine_z = {'tabs'},
-  --     },
-  --   }
-  -- end
-  -- }
 }

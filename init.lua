@@ -54,6 +54,16 @@ return {
     },
   },
 
+
+  heirline = {
+    colors = {
+      mode_fg = "#11111b",
+      normal = "#cba6f7",
+      insert = "#f5c2e7",
+      visual = "#fab387",
+    }
+  },
+
   -- Configure require("lazy").setup() options
   lazy = {
     defaults = { lazy = true },
