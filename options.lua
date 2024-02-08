@@ -12,7 +12,7 @@ return function(lvim)
   lvim.g.icons_enabled = true
   lvim.g.ui_notifications_enabled = true
   lvim.g.autoformat_enabled = true
-
+  lvim.opt.shell = "fish"
  
 
   -- We only need this if we're on Windows...
