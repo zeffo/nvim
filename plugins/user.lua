@@ -114,7 +114,14 @@ return {
     end,
   },
   {
-    "andweeb/presence.nvim"
+    "andweeb/presence.nvim",
+    event="VeryLazy",
+    config = function()
+      require("presence").setup({
+
+      })
+    end
+
   }
   -- {
   -- "ray-x/lsp_signature.nvim",
