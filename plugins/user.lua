@@ -113,6 +113,9 @@ return {
       return opts
     end,
   },
+  {
+    "andweeb/presence.nvim"
+  }
   -- {
   -- "ray-x/lsp_signature.nvim",
   -- event = "VeryLazy",
