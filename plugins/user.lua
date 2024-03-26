@@ -80,6 +80,7 @@ return {
         opts = {position="center"}
       }
       opts.config.layout[2] = header
+      opts.config.layout[6] = {type="group",val={{type="text", val=" ", opts={position="center", hl="SpecialChar"}}}, opts={position="center"}}
     end
   },
   {
