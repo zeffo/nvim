@@ -146,4 +146,13 @@ return {
       return opts
     end,
   },
+  {
+    "mrcjkb/rustaceanvim",
+  },
+  { "tpope/vim-dadbod" },
+  {
+    "MeanderingProgrammer/markdown.nvim",
+    event = "VeryLazy",
+    config = function() require("render-markdown").setup {} end,
+  },
 }
