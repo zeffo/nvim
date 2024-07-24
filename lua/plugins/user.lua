@@ -14,11 +14,11 @@ return {
           notify = true,
           -- neotree = true,
         },
-        custom_highlights = function(colors)
-          return {
-            Comment = { fg = colors.text, bg = colors.surface1 },
-          }
-        end,
+        -- custom_highlights = function(colors)
+        --   return {
+        --     -- Comment = { fg = colors.text, bg = colors.surface1 },
+        --   }
+        -- end,
       }
     end,
   },
@@ -83,10 +83,6 @@ return {
         opts = { position = "center" },
       }
     end,
-  },
-  {
-    "mfussenegger/nvim-jdtls",
-    config = function() require "jdtls" end,
   },
   {
     "andweeb/presence.nvim",
@@ -154,5 +150,11 @@ return {
     "MeanderingProgrammer/markdown.nvim",
     event = "VeryLazy",
     config = function() require("render-markdown").setup {} end,
+  },
+  { "tris203/precognition.nvim", event = "VeryLazy", config = function() require("precognition").setup() end },
+  {
+    "m4xshen/hardtime.nvim",
+    dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+    opts = {},
   },
 }
