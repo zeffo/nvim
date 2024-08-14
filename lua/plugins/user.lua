@@ -151,7 +151,7 @@ return {
     event = "VeryLazy",
     config = function() require("render-markdown").setup {} end,
   },
-  { "tris203/precognition.nvim", event = "VeryLazy", config = function() require("precognition").setup() end },
+  -- { "tris203/precognition.nvim", event = "VeryLazy", config = function() require("precognition").setup() end },
   {
     "m4xshen/hardtime.nvim",
     dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
