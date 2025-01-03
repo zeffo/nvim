@@ -112,12 +112,12 @@ return {
       }
     end,
   },
-  {
-    "ray-x/lsp_signature.nvim",
-    event = "VeryLazy",
-    opts = {},
-    config = function(_, opts) require("lsp_signature").setup(opts) end,
-  },
+  -- {
+  --   "ray-x/lsp_signature.nvim",
+  --   event = "VeryLazy",
+  --   opts = {},
+  --   config = function(_, opts) require("lsp_signature").setup(opts) end,
+  -- },
   {
     "rebelot/heirline.nvim",
     opts = function(_, opts)
@@ -146,9 +146,4 @@ return {
     "mrcjkb/rustaceanvim",
   },
   { "tpope/vim-dadbod" },
-  {
-    "MeanderingProgrammer/markdown.nvim",
-    event = "VeryLazy",
-    config = function() require("render-markdown").setup {} end,
-  },
 }

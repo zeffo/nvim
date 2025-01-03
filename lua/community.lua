@@ -6,9 +6,14 @@
 return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.pack.lua" },
-  { import = "astrocommunity.pack.java" }, -- add Java language support
-  { import = "astrocommunity.lsp.nvim-java" }, -- opt-in to nvim-java for LSP
+  { import = "astrocommunity.pack.python" },
   { import = "astrocommunity.pack.rust" },
+  { import = "astrocommunity.pack.go" },
   { import = "astrocommunity.recipes.telescope-lsp-mappings" },
+  { import = "astrocommunity.completion.blink-cmp" },
+  { import = "astrocommunity.markdown-and-latex.markview-nvim" },
+  { import = "astrocommunity.lsp.lspsaga-nvim" },
+  -- { import = "astrocommunity.pack.java" },
+  -- { import = "astrocommunity.lsp.nvim-java" },
   -- import/override with your plugins folder
 }

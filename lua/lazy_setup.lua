@@ -23,7 +23,6 @@ require("lazy").setup({
         "gzip",
         "netrwPlugin",
         "tarPlugin",
-        "tohtml",
         "zipPlugin",
       },
     },
