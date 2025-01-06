@@ -14,11 +14,13 @@ return {
           notify = true,
           -- neotree = true,
         },
-        -- custom_highlights = function(colors)
-        --   return {
-        --     -- Comment = { fg = colors.text, bg = colors.surface1 },
-        --   }
-        -- end,
+        custom_highlights = function(colors)
+          return {
+            -- Comment = { fg = colors.text, bg = colors.surface1 },
+            SagaBeacon = { bg = colors.pink },
+            SagaVirtLine = { fg = colors.overlay0 },
+          }
+        end,
       }
     end,
   },
@@ -178,5 +180,15 @@ return {
   {
     "nvzone/minty",
     cmd = { "Shades", "Huefy" },
+  },
+  {
+    "nvimdev/lspsaga.nvim",
+    opts = {
+      finder = {
+        keys = {
+          toggle_or_open = "<Enter>",
+        },
+      },
+    },
   },
 }
