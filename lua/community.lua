@@ -14,6 +14,7 @@ return {
   { import = "astrocommunity.markdown-and-latex.markview-nvim" },
   { import = "astrocommunity.lsp.lspsaga-nvim" },
   { import = "astrocommunity.diagnostics.tiny-inline-diagnostic-nvim" },
+  -- { import = "astrocommunity.file-explorer.oil-nvim" },
   -- { import = "astrocommunity.pack.java" },
   -- { import = "astrocommunity.lsp.nvim-java" },
   -- import/override with your plugins folder

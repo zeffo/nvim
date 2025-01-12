@@ -17,6 +17,7 @@ return {
           neotree = true,
           dadbod_ui = true,
           which_key = true,
+          indent_blankline = true,
         },
         custom_highlights = function(colors)
           return {
@@ -206,12 +207,11 @@ return {
     },
   },
   {
-    "akinsho/bufferline.nvim",
-    after = "catppuccin",
-    config = function()
-      require("bufferline").setup {
-        highlights = require("catppuccin.groups.integrations.bufferline").get(),
-      }
-    end,
+    "lukas-reineke/indent-blankline.nvim",
+    opts = {
+      scope = {
+        highlight = "SpecialChar",
+      },
+    },
   },
 }
