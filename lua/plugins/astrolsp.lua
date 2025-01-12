@@ -95,7 +95,11 @@ return {
         --   desc = "Toggle LSP semantic highlight (buffer)",
         --   cond = function(client) return client.server_capabilities.semanticTokensProvider and vim.lsp.semantic_tokens end,
         -- },
-        ["<Leader>lg"] = { "<Cmd>Lspsaga goto_definition<CR>", desc = "Goto Definition", cond = "textDocument/definition" },
+        ["<Leader>lg"] = {
+          "<Cmd>Lspsaga goto_definition<CR>",
+          desc = "Goto Definition",
+          cond = "textDocument/definition",
+        },
       },
     },
     -- A custom `on_attach` function to be run after the default `on_attach` function

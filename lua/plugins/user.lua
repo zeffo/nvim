@@ -12,6 +12,7 @@ return {
           mason = true,
           treesitter = true,
           notify = true,
+          lsp_saga = true,
           -- neotree = true,
         },
         custom_highlights = function(colors)
