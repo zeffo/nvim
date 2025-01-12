@@ -39,6 +39,18 @@ return {
         normal = "#cba6f7",
         insert = "#f5c2e7",
         visual = "#fab387",
+        section_bg = "#45475a",
+        section_fg = "#f5c2e7",
+        buffer_bg = "#313244",
+        buffer_active_bg = "#f5c2e7",
+        buffer_visible_bg = "#f5c2e7",
+        buffer_active_fg = "#11111b",
+        buffer_visible_fg = "#11111b",
+      },
+      separators = {
+        left = { " ", " " }, -- separator for the left side of the statusline
+        right = { " ", " " }, -- separator for the right side of the statusline
+        tab = { "", "" },
       },
     },
   },
