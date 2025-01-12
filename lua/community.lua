@@ -13,6 +13,7 @@ return {
   { import = "astrocommunity.completion.blink-cmp" },
   { import = "astrocommunity.markdown-and-latex.markview-nvim" },
   { import = "astrocommunity.lsp.lspsaga-nvim" },
+  { import = "astrocommunity.diagnostics.tiny-inline-diagnostic-nvim" },
   -- { import = "astrocommunity.pack.java" },
   -- { import = "astrocommunity.lsp.nvim-java" },
   -- import/override with your plugins folder

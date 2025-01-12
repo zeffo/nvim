@@ -13,7 +13,10 @@ return {
           treesitter = true,
           notify = true,
           lsp_saga = true,
-          -- neotree = true,
+          blink_cmp = true,
+          neotree = true,
+          dadbod_ui = true,
+          which_key = true,
         },
         custom_highlights = function(colors)
           return {
@@ -128,14 +131,15 @@ return {
       opts.statusline = { -- statusline
         hl = { fg = "fg", bg = "bg" },
         status.component.mode { mode_text = { padding = { left = 1, right = 1 } } }, -- add the mode text
-        status.component.git_branch(),
         status.component.file_info { filetype = {}, filename = false, file_modified = false },
+        status.component.git_branch(),
         status.component.git_diff(),
         status.component.diagnostics(),
         status.component.fill(),
         status.component.cmd_info(),
         status.component.fill(),
         status.component.lsp(),
+        status.component.virtual_env(),
         status.component.treesitter(),
         status.component.nav(),
         -- remove the 2nd mode indicator on the right
@@ -191,5 +195,23 @@ return {
         },
       },
     },
+  },
+  {
+    "rachartier/tiny-inline-diagnostic.nvim",
+    opts = {
+      preset = "simple",
+      hi = {
+        mixing_color = "#1e1e2e",
+      },
+    },
+  },
+  {
+    "akinsho/bufferline.nvim",
+    after = "catppuccin",
+    config = function()
+      require("bufferline").setup {
+        highlights = require("catppuccin.groups.integrations.bufferline").get(),
+      }
+    end,
   },
 }
