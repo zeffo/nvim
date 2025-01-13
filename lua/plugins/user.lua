@@ -24,6 +24,7 @@ return {
             -- Comment = { fg = colors.text, bg = colors.surface1 },
             SagaBeacon = { bg = colors.pink },
             SagaVirtLine = { fg = colors.overlay0 },
+            IncSearch = { bg = colors.pink, fg = colors.crust },
           }
         end,
       }
