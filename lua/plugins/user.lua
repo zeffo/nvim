@@ -13,7 +13,6 @@ return {
           treesitter = true,
           notify = true,
           lsp_saga = true,
-          blink_cmp = true,
           neotree = true,
           dadbod_ui = true,
           which_key = true,
@@ -25,6 +24,9 @@ return {
             SagaBeacon = { bg = colors.pink },
             SagaVirtLine = { fg = colors.overlay0 },
             IncSearch = { bg = colors.pink, fg = colors.crust },
+            FloatBorder = { fg = colors.pink },
+            PmenuSel = { fg = colors.crust, bg = colors.pink },
+            BlinkCmpScrollBarThumb = { bg = colors.mauve, fg = colors.mauve },
           }
         end,
       }
