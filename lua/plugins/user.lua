@@ -20,9 +20,15 @@ return {
         },
         custom_highlights = function(colors)
           return {
-            -- Comment = { fg = colors.text, bg = colors.surface1 },
             SagaBeacon = { bg = colors.pink },
             SagaVirtLine = { fg = colors.overlay0 },
+            SagaBorder = { fg = colors.pink },
+            SagaTitle = { fg = colors.pink },
+            SagaInCurrent = { fg = colors.mauve },
+            SagaFinderFname = { fg = colors.mauve },
+            SagaToggle = { fg = colors.pink },
+            SagaCount = { bg = colors.pink, fg = colors.crust, style = { "bold" } },
+            SagaSpinner = { fg = colors.pink },
             IncSearch = { bg = colors.pink, fg = colors.crust },
             FloatBorder = { fg = colors.pink },
             PmenuSel = { fg = colors.crust, bg = colors.pink },
