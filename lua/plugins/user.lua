@@ -27,6 +27,11 @@ return {
             FloatBorder = { fg = colors.pink },
             PmenuSel = { fg = colors.crust, bg = colors.pink },
             BlinkCmpScrollBarThumb = { bg = colors.mauve, fg = colors.mauve },
+            NeoTreeRootName = { fg = colors.pink },
+            NeoTreeDirectoryName = { fg = colors.mauve },
+            NeoTreeDirectoryIcon = { fg = colors.mauve },
+            NeoTreeIndentMarker = { fg = colors.mauve },
+            Visual = { bg = colors.mauve, fg = colors.crust },
           }
         end,
       }
@@ -214,6 +219,18 @@ return {
     opts = {
       scope = {
         highlight = "SpecialChar",
+      },
+    },
+  },
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    opts = {
+      filesystem = {
+        filtered_items = {
+          visible = true,
+          hide_dotfiles = false,
+          hide_gitignored = true,
+        },
       },
     },
   },
