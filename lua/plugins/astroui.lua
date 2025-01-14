@@ -36,9 +36,9 @@ return {
     status = {
       colors = {
         mode_fg = "#11111b",
-        normal = "#cba6f7",
+        visual = "#cba6f7",
         insert = "#f5c2e7",
-        visual = "#fab387",
+        normal = "#f9e2af",
         section_bg = "#45475a",
         section_fg = "#f5c2e7",
         buffer_bg = "#313244",

@@ -127,12 +127,6 @@ return {
       }
     end,
   },
-  -- {
-  --   "ray-x/lsp_signature.nvim",
-  --   event = "VeryLazy",
-  --   opts = {},
-  --   config = function(_, opts) require("lsp_signature").setup(opts) end,
-  -- },
   {
     "rebelot/heirline.nvim",
     opts = function(_, opts)
@@ -141,7 +135,7 @@ return {
         hl = { fg = "fg", bg = "bg" },
         status.component.mode { mode_text = { padding = { left = 1, right = 1 } } }, -- add the mode text
         status.component.file_info { filetype = {}, filename = false, file_modified = false },
-        status.component.git_branch { hl = { bg = "#7f849c" } },
+        status.component.git_branch {},
         status.component.git_diff(),
         status.component.diagnostics(),
         status.component.fill(),
