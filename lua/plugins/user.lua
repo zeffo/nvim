@@ -38,6 +38,7 @@ return {
             NeoTreeDirectoryIcon = { fg = colors.mauve },
             NeoTreeIndentMarker = { fg = colors.mauve },
             Visual = { bg = colors.mauve, fg = colors.crust },
+            CursorLineNr = { fg = colors.pink },
           }
         end,
       }
