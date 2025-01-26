@@ -191,21 +191,6 @@ return {
       },
     },
   },
-  { "nvzone/volt", lazy = true },
-  {
-    "nvzone/minty",
-    cmd = { "Shades", "Huefy" },
-  },
-  {
-    "nvimdev/lspsaga.nvim",
-    opts = {
-      finder = {
-        keys = {
-          toggle_or_open = "<Enter>",
-        },
-      },
-    },
-  },
   {
     "rachartier/tiny-inline-diagnostic.nvim",
     opts = {
