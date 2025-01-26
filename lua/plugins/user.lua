@@ -20,15 +20,6 @@ return {
         },
         custom_highlights = function(colors)
           return {
-            SagaBeacon = { bg = colors.pink },
-            SagaVirtLine = { fg = colors.overlay0 },
-            SagaBorder = { fg = colors.pink },
-            SagaTitle = { fg = colors.pink },
-            SagaInCurrent = { fg = colors.mauve },
-            SagaFinderFname = { fg = colors.mauve },
-            SagaToggle = { fg = colors.pink },
-            SagaCount = { bg = colors.pink, fg = colors.crust, style = { "bold" } },
-            SagaSpinner = { fg = colors.pink },
             IncSearch = { bg = colors.pink, fg = colors.crust },
             FloatBorder = { fg = colors.pink },
             PmenuSel = { fg = colors.crust, bg = colors.pink },
@@ -39,6 +30,9 @@ return {
             NeoTreeIndentMarker = { fg = colors.mauve },
             Visual = { bg = colors.mauve, fg = colors.crust },
             CursorLineNr = { fg = colors.pink },
+            TelescopeSelection = { fg = colors.crust, bg = colors.pink, style = { "bold" } },
+            TelescopeSelectionCaret = { fg = colors.pink, bg = colors.pink },
+            TelescopePromptPrefix = { fg = colors.pink },
           }
         end,
       }
