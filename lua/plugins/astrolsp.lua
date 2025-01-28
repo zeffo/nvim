@@ -80,6 +80,10 @@ return {
         },
       },
     },
+    lsp_handlers = {
+      ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
+      ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
+    },
     -- mappings to be set up on attaching of a language server
     mappings = {
       n = {

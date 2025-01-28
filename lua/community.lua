@@ -11,7 +11,6 @@ return {
   { import = "astrocommunity.pack.go" },
   { import = "astrocommunity.recipes.telescope-lsp-mappings" },
   { import = "astrocommunity.completion.blink-cmp" },
-  { import = "astrocommunity.markdown-and-latex.markview-nvim" },
   { import = "astrocommunity.diagnostics.tiny-inline-diagnostic-nvim" },
   { import = "astrocommunity.file-explorer.oil-nvim" },
   -- { import = "astrocommunity.lsp.lspsaga-nvim" },
