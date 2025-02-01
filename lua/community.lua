@@ -11,10 +11,7 @@ return {
   { import = "astrocommunity.pack.go" },
   { import = "astrocommunity.recipes.telescope-lsp-mappings" },
   { import = "astrocommunity.completion.blink-cmp" },
-  { import = "astrocommunity.diagnostics.tiny-inline-diagnostic-nvim" },
   { import = "astrocommunity.file-explorer.oil-nvim" },
-  -- { import = "astrocommunity.lsp.lspsaga-nvim" },
-  -- { import = "astrocommunity.pack.java" },
-  -- { import = "astrocommunity.lsp.nvim-java" },
+  { import = "astrocommunity.diagnostics.lsp_lines-nvim" },
   -- import/override with your plugins folder
 }

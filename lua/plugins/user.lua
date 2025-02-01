@@ -193,15 +193,6 @@ return {
     },
   },
   {
-    "rachartier/tiny-inline-diagnostic.nvim",
-    opts = {
-      preset = "simple",
-      hi = {
-        mixing_color = "#1e1e2e",
-      },
-    },
-  },
-  {
     "lukas-reineke/indent-blankline.nvim",
     opts = {
       scope = {
@@ -220,5 +211,10 @@ return {
         },
       },
     },
+  },
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    opts = {},
   },
 }
