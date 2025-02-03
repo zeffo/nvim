@@ -32,6 +32,8 @@ return {
             TelescopeSelection = { fg = colors.crust, bg = colors.pink, style = { "bold" } },
             TelescopeSelectionCaret = { fg = colors.pink, bg = colors.pink },
             TelescopePromptPrefix = { fg = colors.pink },
+
+            DiagnosticUnderlineError = { style = { "undercurl" } },
           }
         end,
       }
@@ -183,30 +185,6 @@ return {
     "saghen/blink.cmp",
     opts = {
       signature = { enabled = false },
-      completion = { menu = { auto_show = false } },
-      keymap = {
-        ["<C-Space>"] = { "show", "show_documentation", "hide_documentation" },
-        ["<Up>"] = { "select_prev", "fallback" },
-        ["<Down>"] = { "select_next", "fallback" },
-        ["<C-N>"] = { "select_next", "show" },
-        ["<C-P>"] = { "select_prev", "show" },
-        ["<C-J>"] = { "select_next", "fallback" },
-        ["<C-K>"] = { "select_prev", "fallback" },
-        ["<C-U>"] = { "scroll_documentation_up", "fallback" },
-        ["<C-D>"] = { "scroll_documentation_down", "fallback" },
-        ["<C-e>"] = { "hide", "fallback" },
-        ["<CR>"] = { "accept", "fallback" },
-        ["<Tab>"] = {
-          "select_next",
-          "snippet_forward",
-          "fallback",
-        },
-        ["<S-Tab>"] = {
-          "select_prev",
-          "snippet_backward",
-          "fallback",
-        },
-      },
       sources = {
         -- add vim-dadbod-completion to your completion providers
         default = { "lsp", "path", "snippets", "buffer", "dadbod" },
@@ -233,6 +211,15 @@ return {
           hide_dotfiles = false,
           hide_gitignored = true,
         },
+      },
+    },
+  },
+  {
+    "rachartier/tiny-inline-diagnostic.nvim",
+    opts = {
+      preset = "simple",
+      hi = {
+        mixing_color = "#1e1e2e",
       },
     },
   },
