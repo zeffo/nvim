@@ -23,6 +23,7 @@ return {
             FloatBorder = { fg = colors.pink },
             PmenuSel = { fg = colors.crust, bg = colors.pink },
             BlinkCmpScrollBarThumb = { bg = colors.mauve, fg = colors.mauve },
+            BlinkCmpKind = { fg = colors.pink },
             NeoTreeRootName = { fg = colors.pink },
             NeoTreeDirectoryName = { fg = colors.mauve },
             NeoTreeDirectoryIcon = { fg = colors.mauve },
@@ -32,7 +33,6 @@ return {
             TelescopeSelection = { fg = colors.crust, bg = colors.pink, style = { "bold" } },
             TelescopeSelectionCaret = { fg = colors.pink, bg = colors.pink },
             TelescopePromptPrefix = { fg = colors.pink },
-
             DiagnosticUnderlineError = { style = { "undercurl" } },
           }
         end,
