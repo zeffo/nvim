@@ -131,6 +131,7 @@ return {
   },
   {
     "rebelot/heirline.nvim",
+    event = "VeryLazy",
     opts = function(_, opts)
       local status = require "astroui.status"
       opts.statusline = { -- statusline
@@ -156,6 +157,7 @@ return {
   },
   {
     "mrcjkb/rustaceanvim",
+    event = 'VeryLazy',
     opts = {
       tools = {
         hover_actions = {
@@ -166,6 +168,7 @@ return {
   },
   {
     "kristijanhusak/vim-dadbod-ui",
+    event = "VeryLazy",
     dependencies = {
       { "tpope/vim-dadbod", lazy = true },
       { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
@@ -183,6 +186,7 @@ return {
   },
   { -- optional saghen/blink.cmp completion source
     "saghen/blink.cmp",
+    event = "VeryLazy",
     opts = {
       signature = { enabled = false },
       sources = {
@@ -196,6 +200,7 @@ return {
   },
   {
     "lukas-reineke/indent-blankline.nvim",
+    event = "VeryLazy",
     opts = {
       scope = {
         highlight = "SpecialChar",
@@ -204,6 +209,7 @@ return {
   },
   {
     "nvim-neo-tree/neo-tree.nvim",
+    event = "VeryLazy",
     opts = {
       filesystem = {
         filtered_items = {
@@ -216,6 +222,7 @@ return {
   },
   {
     "rachartier/tiny-inline-diagnostic.nvim",
+    event = "VeryLazy",
     opts = {
       preset = "simple",
       hi = {
