@@ -24,6 +24,7 @@ return {
             PmenuSel = { fg = colors.crust, bg = colors.pink },
             BlinkCmpScrollBarThumb = { bg = colors.mauve, fg = colors.mauve },
             BlinkCmpKind = { fg = colors.pink },
+            BlinkCmpLabelMatch = { fg = colors.pink, style = {"bold"}},
             NeoTreeRootName = { fg = colors.pink },
             NeoTreeDirectoryName = { fg = colors.mauve },
             NeoTreeDirectoryIcon = { fg = colors.mauve },
