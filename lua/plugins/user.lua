@@ -189,7 +189,11 @@ return {
     "saghen/blink.cmp",
     event = "VeryLazy",
     opts = {
-      signature = { enabled = false },
+      completion = {
+        menu = {
+          auto_show = false
+        },
+      },
       sources = {
         -- add vim-dadbod-completion to your completion providers
         default = { "lsp", "path", "snippets", "buffer", "dadbod" },
