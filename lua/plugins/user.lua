@@ -13,6 +13,15 @@ return {
           neotree = true,
           dadbod_ui = true,
           which_key = true,
+          snacks = {
+            enabled = true,
+            indent_scope_color = "pink"
+          },
+          mini = {
+            enabled = true,
+            indentscope_color = "pink"
+          },
+          blink_cmp = true
         },
         custom_highlights = function(colors)
           return {
@@ -180,7 +189,7 @@ return {
         sections = {
           {
             section = "terminal",
-            cmd = "chafa /e/Images/rocket.jpg -f symbols --stretch; sleep 0.1sec",
+            cmd = "chafa ~/.config/nvim/rocket.jpg -f symbols --stretch",
             height = 20,
           },
           { section = "startup", gap = 2, padding = 2 },
