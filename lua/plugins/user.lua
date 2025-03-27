@@ -225,14 +225,5 @@ return {
       },
     },
   },
-  {
-    "rachartier/tiny-inline-diagnostic.nvim",
-    event = "VeryLazy",
-    opts = {
-      preset = "simple",
-      hi = {
-        mixing_color = "#1e1e2e",
-      },
-    },
-  },
+  { 'bhugovilela/palette.nvim' }
 }
