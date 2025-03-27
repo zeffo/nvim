@@ -8,14 +8,11 @@ return {
         transparent_background = true,
         integrations = {
           aerial = true,
-          alpha = true,
           mason = true,
           treesitter = true,
-          notify = true,
           neotree = true,
           dadbod_ui = true,
           which_key = true,
-          indent_blankline = true,
         },
         custom_highlights = function(colors)
           return {
@@ -24,81 +21,16 @@ return {
             PmenuSel = { fg = colors.crust, bg = colors.pink },
             BlinkCmpScrollBarThumb = { bg = colors.mauve, fg = colors.mauve },
             BlinkCmpKind = { fg = colors.pink },
-            BlinkCmpLabelMatch = { fg = colors.pink, style = {"bold"}},
+            BlinkCmpLabelMatch = { fg = colors.pink, style = { "bold" } },
             NeoTreeRootName = { fg = colors.pink },
             NeoTreeDirectoryName = { fg = colors.mauve },
             NeoTreeDirectoryIcon = { fg = colors.mauve },
             NeoTreeIndentMarker = { fg = colors.mauve },
             Visual = { bg = colors.mauve, fg = colors.crust },
             CursorLineNr = { fg = colors.pink },
-            TelescopeSelection = { fg = colors.crust, bg = colors.pink, style = { "bold" } },
-            TelescopeSelectionCaret = { fg = colors.pink, bg = colors.pink },
-            TelescopePromptPrefix = { fg = colors.pink },
             DiagnosticUnderlineError = { style = { "undercurl" } },
           }
         end,
-      }
-    end,
-  },
-  {
-    "rcarriga/nvim-notify",
-    opts = function(_, opts) opts.background_colour = "#000000" end,
-  },
-  {
-    "goolord/alpha-nvim",
-    opts = function(_, opts)
-      -- opts.section.header.opts.hl = "SpecialChar"
-      for _k, v in pairs(opts.section.buttons.val) do
-        v.opts.hl = "Keyword"
-        v.opts.hl_shortcut = "Error"
-      end
-      local gradient = {
-        "SpecialChar",
-        "Keyword",
-        "Error",
-        "@parameter",
-        "Constant",
-        "Structure",
-        "String",
-        "Character",
-        "Operator",
-        "@constructor",
-        "Function",
-        "@field",
-      }
-      local text = {
-        "  █████╗ ███╗   ███╗ █████╗ ███╗   ██╗ ",
-        " ██╔══██╗████╗ ████║██╔══██╗████╗  ██║ ",
-        " ███████║██╔████╔██║███████║██╔██╗ ██║ ",
-        " ██╔══██║██║╚██╔╝██║██╔══██║██║╚██╗██║ ",
-        " ██║  ██║██║ ╚═╝ ██║██║  ██║██║ ╚████║ ",
-        " ╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝ ",
-        "                                       ",
-        "                                      ",
-        "                /\\_/\\                ",
-        "                ( o.o )                ",
-        "                 > ^ <                 ",
-        "            https://zeffo.me           ",
-      }
-      local lines = {}
-      for i, l in ipairs(text) do
-        local line = {
-          type = "text",
-          val = l,
-          opts = { hl = gradient[i], position = "center" },
-        }
-        lines[i] = line
-      end
-      local header = {
-        type = "group",
-        val = lines,
-        opts = { position = "center" },
-      }
-      opts.config.layout[2] = header
-      opts.config.layout[6] = {
-        type = "group",
-        val = { { type = "text", val = " ", opts = { position = "center", hl = "SpecialChar" } } },
-        opts = { position = "center" },
       }
     end,
   },
@@ -158,7 +90,7 @@ return {
   },
   {
     "mrcjkb/rustaceanvim",
-    event = 'VeryLazy',
+    event = "VeryLazy",
     opts = {
       tools = {
         hover_actions = {
@@ -191,7 +123,7 @@ return {
     opts = {
       completion = {
         menu = {
-          auto_show = false
+          auto_show = false,
         },
       },
       sources = {
@@ -200,15 +132,6 @@ return {
         providers = {
           dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
         },
-      },
-    },
-  },
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    event = "VeryLazy",
-    opts = {
-      scope = {
-        highlight = "SpecialChar",
       },
     },
   },
@@ -225,5 +148,45 @@ return {
       },
     },
   },
-  { 'bhugovilela/palette.nvim' }
+  { "bhugovilela/palette.nvim" },
+  {
+    "folke/snacks.nvim",
+    opts = {
+      indent = {
+        indent = {
+          only_scope = true,
+        },
+      },
+      dashboard = {
+        preset = {
+          keys = {
+            { key = "f", desc = "find", action = ":lua Snacks.dashboard.pick('files')" },
+            { key = "n", desc = "new", action = ":ene | startinsert" },
+            { key = "g", desc = "search", action = ":lua Snacks.dashboard.pick('live_grep')" },
+            { key = "r", desc = "recent", action = ":lua Snacks.dashboard.pick('oldfiles')" },
+            {
+              key = "c",
+              desc = "config",
+              action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
+            },
+            { key = "s", desc = "restore", section = "session" },
+            { key = "L", desc = "lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
+            { key = "q", desc = "quit", action = ":qa" },
+          },
+        },
+        formats = {
+          key = function(item) return { { "[", hl = "special" }, { item.key, hl = "key" }, { "]", hl = "special" } } end,
+        },
+        sections = {
+          {
+            section = "terminal",
+            cmd = "chafa /e/Images/rocket.jpg -f symbols --stretch; sleep 0.1sec",
+            height = 20,
+          },
+          { section = "startup", gap = 2, padding = 2 },
+          { section = "keys" },
+        },
+      },
+    },
+  },
 }
