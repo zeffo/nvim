@@ -15,14 +15,14 @@ return {
           which_key = true,
           snacks = {
             enabled = true,
-            indent_scope_color = "pink"
+            indent_scope_color = "pink",
           },
           mini = {
             enabled = true,
-            indentscope_color = "pink"
+            indentscope_color = "pink",
           },
           blink_cmp = true,
-          telescope = true
+          telescope = true,
         },
         custom_highlights = function(colors)
           return {
@@ -41,7 +41,11 @@ return {
             DiagnosticUnderlineError = { style = { "undercurl" } },
             TelescopeSelection = { fg = colors.crust, bg = colors.pink, style = { "bold" } },
             TelescopeSelectionCaret = { fg = colors.pink, bg = colors.pink },
+            TelescopePreviewLine = { bg = colors.pink, fg = colors.crust, style = { "bold" } },
             TelescopePromptPrefix = { fg = colors.pink },
+            SnacksPickerListCursorLine = { bg = colors.pink, fg = colors.crust, style = { "bold" } },
+            SnacksPickerPreviewCursorLine = { bg = colors.pink, fg = colors.crust, style = { "bold" } },
+            Search = { bg = colors.pink, fg = colors.crust}
           }
         end,
       }
@@ -166,7 +170,7 @@ return {
     "folke/snacks.nvim",
     opts = {
       picker = {
-        prompt = ""
+        prompt = "",
       },
       indent = {
         indent = {
