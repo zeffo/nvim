@@ -23,6 +23,10 @@ return {
           },
           blink_cmp = true,
           telescope = true,
+          illuminate = {
+              enabled = true,
+              lsp = false
+          }
         },
         custom_highlights = function(colors)
           return {
@@ -45,7 +49,10 @@ return {
             TelescopePromptPrefix = { fg = colors.pink },
             SnacksPickerListCursorLine = { bg = colors.pink, fg = colors.crust, style = { "bold" } },
             SnacksPickerPreviewCursorLine = { bg = colors.pink, fg = colors.crust, style = { "bold" } },
-            Search = { bg = colors.pink, fg = colors.crust },
+            Search = { bg = colors.peach, fg = colors.crust, style = { "bold" } },
+            IlluminatedWordRead = { bg = colors.surface1 },
+            IlluminatedWordWrite = { bg = colors.surface1 },
+            IlluminatedWordText = { bg = colors.surface1 },
           }
         end,
       }
@@ -59,7 +66,12 @@ return {
       opts.statusline = { -- statusline
         hl = { fg = "fg", bg = "bg" },
         status.component.mode { mode_text = { padding = { left = 1, right = 1 } } }, -- add the mode text
-        status.component.file_info { fileicon = {}, filetype = { padding = { right = 1 }}, filename = false, file_modified = false},
+        status.component.file_info {
+          fileicon = {},
+          filetype = { padding = { right = 1 } },
+          filename = false,
+          file_modified = false,
+        },
         status.component.git_branch {},
         status.component.git_diff(),
         status.component.diagnostics(),
@@ -111,3 +123,4 @@ return {
     lazy = false,
   },
 }
+
