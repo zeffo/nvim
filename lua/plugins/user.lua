@@ -24,9 +24,9 @@ return {
           blink_cmp = true,
           telescope = true,
           illuminate = {
-              enabled = true,
-              lsp = false
-          }
+            enabled = true,
+            lsp = false,
+          },
         },
         custom_highlights = function(colors)
           return {
@@ -53,6 +53,7 @@ return {
             IlluminatedWordRead = { bg = colors.surface1 },
             IlluminatedWordWrite = { bg = colors.surface1 },
             IlluminatedWordText = { bg = colors.surface1 },
+            LspSignatureActiveParameter = { bg = colors.peach, fg = colors.crust, style = { "bold" } },
           }
         end,
       }
@@ -123,4 +124,3 @@ return {
     lazy = false,
   },
 }
-

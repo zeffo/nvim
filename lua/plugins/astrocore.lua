@@ -3,13 +3,6 @@
 -- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
 --       as this provides autocomplete and documentation while editing
 
-local err_fmt = {
-  "%EError:%.%#",
-  "%C%s × %m",
-  "%C%s╭─[%f:%l:%c]",
-  "%C%.%#",
-}
-
 ---@type LazySpec
 return {
   "AstroNvim/astrocore",
@@ -49,9 +42,8 @@ return {
         shellxescape = "",
         shellxquote = "",
         shellquote = "",
-        shellpipe = '| complete | update stderr { ansi strip } | tee { get stderr | save --force --raw %s } | into record',
-        errorformat = table.concat(err_fmt, ", "),
-        makeprg = "nu -e "
+        shellpipe = "| complete | tee { ($in.stdout + $in.stderr) | save -r -f %s }",
+        makeprg = "",
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
