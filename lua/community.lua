@@ -9,7 +9,6 @@ return {
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.python" },
   { import = "astrocommunity.pack.rust" },
-  { import = "astrocommunity.pack.go" },
   { import = "astrocommunity.recipes.picker-lsp-mappings" },
   { import = "astrocommunity.file-explorer.oil-nvim" },
   -- import/override with your plugins folder

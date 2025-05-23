@@ -38,7 +38,7 @@ return {
         mode_fg = "#11111b",
         visual = "#cba6f7",
         insert = "#f5c2e7",
-        normal = "#f9e2af",
+        normal = "#fab387",
         section_bg = "#45475a",
         section_fg = "#f5c2e7",
         buffer_bg = "#313244",
