@@ -6,6 +6,10 @@ return {
       require("catppuccin").setup {
         flavour = "mocha",
         transparent_background = true,
+        float = {
+          transparent = true,
+          solid = true
+        },
         integrations = {
           aerial = true,
           mason = true,
@@ -21,12 +25,17 @@ return {
             enabled = true,
             indentscope_color = "pink",
           },
-          blink_cmp = true,
+          blink_cmp = {
+            style = "solid"
+          },
           telescope = true,
           illuminate = {
             enabled = true,
             lsp = false,
           },
+        },
+        color_overrides = {
+          mocha = {},
         },
         custom_highlights = function(colors)
           return {
@@ -47,6 +56,8 @@ return {
             TelescopeSelectionCaret = { fg = colors.pink, bg = colors.pink },
             TelescopePreviewLine = { bg = colors.pink, fg = colors.crust, style = { "bold" } },
             TelescopePromptPrefix = { fg = colors.pink },
+            SnacksPickerPreviewTitle = { fg = colors.crust, bg = colors.pink },
+            SnacksPickerListTitle = { fg = colors.crust, bg = colors.peach },
             SnacksPickerListCursorLine = { bg = colors.pink, fg = colors.crust, style = { "bold" } },
             SnacksPickerPreviewCursorLine = { bg = colors.pink, fg = colors.crust, style = { "bold" } },
             Search = { bg = colors.peach, fg = colors.crust, style = { "bold" } },
@@ -87,9 +98,5 @@ return {
       -- Your DBUI configuration
       vim.g.db_ui_use_nerd_fonts = 1
     end,
-  },
-  {
-    "OXY2DEV/markview.nvim",
-    lazy = false,
   },
 }

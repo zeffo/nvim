@@ -6,7 +6,7 @@ local function has_words_before()
 end
 
 return {
-  { -- optional saghen/blink.cmp completion source
+  {
     "Saghen/blink.cmp",
     opts = {
       completion = {
@@ -73,6 +73,18 @@ return {
         indent = {
           only_scope = true,
         },
+      },
+      dim = {
+        animate = {
+          enabled = false
+        }
+      },
+      zen = {
+        toggles = {
+          dim = true,
+          diagnostics = true,
+          inlay_hints = true
+        }
       },
       dashboard = {
         preset = {
