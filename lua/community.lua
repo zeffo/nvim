@@ -11,5 +11,6 @@ return {
   { import = "astrocommunity.pack.rust" },
   { import = "astrocommunity.recipes.picker-lsp-mappings" },
   { import = "astrocommunity.file-explorer.oil-nvim" },
+  { import = "astrocommunity.motion.mini-surround" }
   -- import/override with your plugins folder
 }
