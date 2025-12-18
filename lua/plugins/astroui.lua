@@ -2,7 +2,6 @@
 -- Configuration documentation can be found with `:h astroui`
 -- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
 --       as this provides autocomplete and documentation while editing
-
 ---@type LazySpec
 return {
   "AstroNvim/astroui",
@@ -39,19 +38,36 @@ return {
         visual = "#cba6f7",
         insert = "#f5c2e7",
         normal = "#fab387",
-        section_bg = "#45475a",
+        section_bg = "#313244",
         section_fg = "#f5c2e7",
         buffer_bg = "#313244",
         buffer_active_bg = "#f5c2e7",
         buffer_visible_bg = "#f5c2e7",
         buffer_active_fg = "#11111b",
         buffer_visible_fg = "#11111b",
+        file_info_bg = "#f5c2e7",
+        file_info_fg = "#11111b",
+        git_branch_bg = "#cba6f7",
+        git_branch_fg = "#11111b"
       },
       separators = {
         left = { " ", " " }, -- separator for the left side of the statusline
         right = { " ", " " }, -- separator for the right side of the statusline
         tab = { "", "" },
         -- tab = { "", "" },
+      },
+      attributes = {
+        mode = { bold = true },
+        file_info = { bold = true }
+      },
+      icon_highlights = {
+        -- enable or disable breadcrumb icon highlighting
+        breadcrumbs = true,
+        -- Enable or disable the highlighting of filetype icons both in the statusline and tabline
+        file_icon = {
+          tabline = function(self) return self.is_active or self.is_visible end,
+          statusline = true,
+        },
       },
     },
   },

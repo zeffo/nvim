@@ -8,7 +8,7 @@ return {
         transparent_background = true,
         float = {
           transparent = true,
-          solid = true
+          solid = true,
         },
         integrations = {
           aerial = true,
@@ -28,7 +28,6 @@ return {
           blink_cmp = {
             style = "solid"
           },
-          telescope = true,
           illuminate = {
             enabled = true,
             lsp = false,
@@ -52,10 +51,6 @@ return {
             Visual = { bg = colors.peach, fg = colors.crust },
             CursorLineNr = { fg = colors.pink },
             DiagnosticUnderlineError = { style = { "undercurl" } },
-            TelescopeSelection = { fg = colors.crust, bg = colors.pink, style = { "bold" } },
-            TelescopeSelectionCaret = { fg = colors.pink, bg = colors.pink },
-            TelescopePreviewLine = { bg = colors.pink, fg = colors.crust, style = { "bold" } },
-            TelescopePromptPrefix = { fg = colors.pink },
             SnacksPickerPreviewTitle = { fg = colors.crust, bg = colors.pink },
             SnacksPickerListTitle = { fg = colors.crust, bg = colors.peach },
             SnacksPickerListCursorLine = { bg = colors.pink, fg = colors.crust, style = { "bold" } },

@@ -62,8 +62,8 @@ return {
         },
         source_selector = {
           winbar = false,
-          statusline = false
-        }
+          statusline = false,
+        },
       },
     },
   },
@@ -80,15 +80,15 @@ return {
       },
       dim = {
         animate = {
-          enabled = false
-        }
+          enabled = false,
+        },
       },
       zen = {
         toggles = {
-          dim = true,
+          dim = false,
           diagnostics = true,
-          inlay_hints = true
-        }
+          inlay_hints = true,
+        },
       },
       dashboard = {
         preset = {
@@ -136,14 +136,14 @@ return {
         hl = { fg = "fg", bg = "bg" },
         status.component.mode { mode_text = { padding = { left = 1, right = 1 } } }, -- add the mode text
         status.component.file_info {
-          fileicon = {},
+          file_icon = { hl = { fg = status.hl.mode_fg } },
           filetype = { padding = { right = 1 } },
           filename = false,
           file_modified = false,
         },
         status.component.git_branch {},
-        status.component.git_diff(),
-        status.component.diagnostics(),
+        status.component.git_diff { padding = { right = 1 } },
+        status.component.diagnostics { padding = { right = 1 } },
         status.component.fill(),
         status.component.cmd_info(),
         status.component.fill(),
