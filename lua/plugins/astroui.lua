@@ -45,7 +45,7 @@ return {
         buffer_visible_bg = "#f5c2e7",
         buffer_active_fg = "#11111b",
         buffer_visible_fg = "#11111b",
-        file_info_bg = "#f5c2e7",
+        file_info_bg = "#f38ba8",
         file_info_fg = "#11111b",
         git_branch_bg = "#cba6f7",
         git_branch_fg = "#11111b"
