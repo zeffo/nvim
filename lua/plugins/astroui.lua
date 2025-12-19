@@ -34,11 +34,12 @@ return {
     },
     status = {
       colors = {
+        bg = "#181825",
         mode_fg = "#11111b",
         visual = "#cba6f7",
         insert = "#f5c2e7",
         normal = "#fab387",
-        section_bg = "#313244",
+        section_bg = "#181825",
         section_fg = "#f5c2e7",
         buffer_bg = "#313244",
         buffer_active_bg = "#f5c2e7",
@@ -48,7 +49,9 @@ return {
         file_info_bg = "#f38ba8",
         file_info_fg = "#11111b",
         git_branch_bg = "#cba6f7",
-        git_branch_fg = "#11111b"
+        git_branch_fg = "#11111b",
+        lsp_fg = "#cba6f7",
+        treesitter_fg = "#f38ba8",
       },
       separators = {
         left = { " ", " " }, -- separator for the left side of the statusline
@@ -58,7 +61,7 @@ return {
       },
       attributes = {
         mode = { bold = true },
-        file_info = { bold = true }
+        file_info = { bold = true },
       },
       icon_highlights = {
         -- enable or disable breadcrumb icon highlighting
