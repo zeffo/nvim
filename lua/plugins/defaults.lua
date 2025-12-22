@@ -109,18 +109,12 @@ return {
           },
         },
         formats = {
-          key = function(item) return { { "[", hl = "special" }, { item.key, hl = "key" }, { "]", hl = "special" } } end,
-          image = function(item) return { print(item) } end,
+          desc = function(item) return { { item.desc, hl = "Keyword" } } end,
+          key = function(item)
+            return { { "[", hl = "special" }, { item.key, hl = "ErrorMsg" }, { "]", hl = "special" } }
+          end,
         },
         sections = {
-          -- {
-          --   section = "image",
-          --   source = "/e/Images/rocket/_20.png",
-          --   height = 3,
-          --   align = "right",
-          --   padding = 1
-          --
-          -- },
           { section = "startup", gap = 2, padding = 2 },
           { section = "keys" },
         },

@@ -34,12 +34,12 @@ return {
     },
     status = {
       colors = {
-        bg = "#181825",
+        bg = "#1e1e2e",
         mode_fg = "#11111b",
         visual = "#cba6f7",
         insert = "#f5c2e7",
         normal = "#fab387",
-        section_bg = "#181825",
+        section_bg = "#1e1e2e",
         section_fg = "#f5c2e7",
         buffer_bg = "#313244",
         buffer_active_bg = "#f5c2e7",
