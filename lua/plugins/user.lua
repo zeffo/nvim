@@ -48,6 +48,8 @@ return {
             NeoTreeDirectoryName = { fg = colors.mauve },
             NeoTreeDirectoryIcon = { fg = colors.mauve },
             NeoTreeIndentMarker = { fg = colors.mauve },
+            NeoTreeTabSeparatorInactive = { fg = colors.base, bg = colors.base },
+            NeoTreeTabSeparatorActive = { fg = colors.base, bg = colors.base },
             Visual = { bg = colors.peach, fg = colors.crust },
             CursorLineNr = { fg = colors.pink },
             DiagnosticUnderlineError = { style = { "undercurl" } },
