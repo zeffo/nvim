@@ -79,10 +79,19 @@ return {
           callback = function() vim.lsp.buf.clear_references() end,
         },
       },
+      quickfix = {
+        {
+          event = "DiagnosticChanged",
+          desc = "Synchronize LSP Diagnostics to quickfix list",
+          callback = function()
+            vim.schedule(function() vim.diagnostic.setqflist { open = false } end)
+          end,
+        },
+      },
     },
     defaults = {
       hover = { border = "rounded" },
-      signature_help = { border = "rounded" }
+      signature_help = { border = "rounded" },
     },
     -- mappings to be set up on attaching of a language server
     mappings = {
@@ -93,6 +102,10 @@ return {
           function() vim.lsp.buf.declaration() end,
           desc = "Declaration of current symbol",
           cond = "textDocument/declaration",
+        },
+        ["<Leader>xx"] = {
+          function() vim.diagnostic.setqflist() end,
+          desc = "Populate quickfix list with LSP diagnostics"
         },
         -- ["<Leader>uY"] = {
         --   function() require("astrolsp.toggles").buffer_semantic_tokens() end,
