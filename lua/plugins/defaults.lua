@@ -68,6 +68,14 @@ return {
     },
   },
   {
+    "folke/which-key.nvim",
+    opts = {
+      win = {
+        border = "rounded"
+      }
+    }
+  },
+  {
     "folke/snacks.nvim",
     opts = {
       picker = {
