@@ -79,15 +79,6 @@ return {
           callback = function() vim.lsp.buf.clear_references() end,
         },
       },
-      quickfix = {
-        {
-          event = "DiagnosticChanged",
-          desc = "Synchronize LSP Diagnostics to quickfix list",
-          callback = function()
-            vim.schedule(function() vim.diagnostic.setqflist { open = false } end)
-          end,
-        },
-      },
     },
     defaults = {
       hover = { border = "rounded" },
