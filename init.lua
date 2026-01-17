@@ -64,7 +64,7 @@ vim.pack.add({
 	{ src = "https://github.com/catppuccin/nvim", name = "catppuccin" },
 	{ src = "https://github.com/rebelot/heirline.nvim" },
 	{ src = "https://github.com/saghen/blink.cmp", version = vim.version.range("*") },
-	-- { src = "https://github.com/lewis6991/gitsigns.nvim" },
+	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
 	{ src = "https://github.com/stevearc/oil.nvim" },
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" },
 	{ src = "https://github.com/echasnovski/mini.pick" },
@@ -127,6 +127,7 @@ vim.lsp.enable({
 	"gopls",
 	"rust_analyzer",
 })
+
 vim.keymap.set("n", "<Leader>lf", vim.lsp.buf.format)
 vim.keymap.set("n", "<Leader>la", vim.lsp.buf.code_action)
 vim.keymap.set("n", "<leader>xd", function()
@@ -137,6 +138,13 @@ vim.keymap.set("n", "<leader>xd", function()
 	})
 	vim.cmd.copen()
 end, { desc = "Add diagnostics to quickfix" })
+
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(args)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = args.buf })
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { buffer = args.buf })
+  end,
+})
 
 -- splits
 require("smart-splits").setup({
@@ -181,7 +189,7 @@ vim.cmd.colorscheme("catppuccin-mocha")
 local colors = require("catppuccin.palettes").get_palette("mocha")
 
 -- icons
--- require("gitsigns").setup()
+require("gitsigns").setup()
 
 
 -- treesitter
