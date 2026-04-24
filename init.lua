@@ -50,7 +50,7 @@ vim.o.shellcmdflag = "--stdin --no-newline -c"
 vim.o.shellxescape = ""
 vim.o.shellxquote = ""
 vim.o.shellquote = ""
-vim.o.shellpipe = "| complete | tee { ($in.stdout + $in.stderr) | save -r -f %s }"
+vim.o.shellpipe = "| complete | update stderr { ansi strip } | tee { get stderr | save --force --raw %s } | into record"
 vim.o.makeprg = ""
 vim.o.winborder = "rounded"
 
@@ -64,10 +64,11 @@ vim.pack.add({
 	{ src = "https://github.com/catppuccin/nvim", name = "catppuccin" },
 	{ src = "https://github.com/rebelot/heirline.nvim" },
 	{ src = "https://github.com/saghen/blink.cmp", version = vim.version.range("*") },
-	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
 	{ src = "https://github.com/stevearc/oil.nvim" },
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" },
-	{ src = "https://github.com/echasnovski/mini.pick" },
+	{ src = "https://github.com/nvim-mini/mini.pick" },
+	{ src = "https://github.com/nvim-mini/mini.diff" },
+	{ src = "https://github.com/nvim-mini/mini-git" },
 	{ src = "https://github.com/mrjones2014/smart-splits.nvim" },
 })
 
@@ -126,6 +127,8 @@ vim.lsp.enable({
 	"ty",
 	"gopls",
 	"rust_analyzer",
+	"clangd",
+	"marksman"
 })
 
 vim.keymap.set("n", "<Leader>lf", vim.lsp.buf.format)
@@ -188,8 +191,6 @@ require("catppuccin").setup({
 vim.cmd.colorscheme("catppuccin-mocha")
 local colors = require("catppuccin.palettes").get_palette("mocha")
 
--- icons
-require("gitsigns").setup()
 
 
 -- treesitter
@@ -231,10 +232,10 @@ local char_missing = "•"
 local tab_hl = utils.get_highlight("Tabline")
 local tab_sel_hl = utils.get_highlight("TablineSel")
 local mode_map = {
-	n = { "Normal", colors.peach },
-	v = { "Visual", colors.mauve },
-	i = { "Insert", colors.pink },
-	V = { "Visual Block", colors.yellow },
+	n = { "normal", colors.peach },
+	v = { "visual", colors.mauve },
+	i = { "insert", colors.pink },
+	V = { "visual block", colors.yellow },
 }
 
 local function get_mode_color(mode)
@@ -438,10 +439,10 @@ local LSPPill = make_pill({ fg = colors.yellow, bg = slbg, bold = true }, {
 local GitDiffPill = make_pill({ fg = colors.surface0, bold = true }, {
 
 	init = function(self)
-		local s = vim.b.gitsigns_status_dict or {}
-		self.added = s.added or 0
-		self.removed = s.removed or 0
-		self.changed = s.changed or 0
+		local s = vim.b.minidiff_summary or {}
+		self.added = s.add or 0
+		self.removed = s.delete or 0
+		self.changed = s.change or 0
 	end,
 	{
 		hl = { fg = colors.surface1 },
@@ -543,12 +544,13 @@ local DiagnosticsPill = make_pill({ fg = colors.surface0 }, {
 
 local GitBranchPill = make_pill({ fg = colors.mauve, bg = slbg, bold = true }, {
 	init = function(self)
-		self.status_dict = vim.b.gitsigns_status_dict
+		local s = vim.b.minigit_summary
+		self.branch = s and s.head_name or nil
 	end,
 
 	provider = function(self)
 		return pad_string(
-			self.status_dict and (#self.status_dict.head > 1 and self.status_dict.head or "?") or char_missing
+			self.branch and (#self.branch > 1 and self.branch or "?") or char_missing
 		)
 	end,
 }, { right_sep = bfr_seps[2] })
@@ -781,6 +783,12 @@ require("blink.cmp").setup({
 		},
 	},
 })
+
+-- diff
+require("mini.diff").setup()
+
+-- git
+require("mini.git").setup()
 
 -- pickers
 local pick = require("mini.pick")
