@@ -56,7 +56,7 @@ vim.o.winborder = "rounded"
 
 -- globals
 vim.g.mapleader = " "
-vim.g.python3_host_prog = '/usr/bin/python'
+vim.g.python3_host_prog = "/usr/bin/python"
 
 -- plugins
 vim.pack.add({
@@ -64,11 +64,12 @@ vim.pack.add({
 	{ src = "https://github.com/catppuccin/nvim", name = "catppuccin" },
 	{ src = "https://github.com/rebelot/heirline.nvim" },
 	{ src = "https://github.com/saghen/blink.cmp", version = vim.version.range("*") },
-	{ src = "https://github.com/stevearc/oil.nvim" },
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" },
 	{ src = "https://github.com/nvim-mini/mini.pick" },
 	{ src = "https://github.com/nvim-mini/mini.diff" },
 	{ src = "https://github.com/nvim-mini/mini-git" },
+	{ src = "https://github.com/nvim-mini/mini.files" },
+	{ src = "https://github.com/nvim-mini/mini.icons" },
 	{ src = "https://github.com/mrjones2014/smart-splits.nvim" },
 })
 
@@ -128,7 +129,7 @@ vim.lsp.enable({
 	"gopls",
 	"rust_analyzer",
 	"clangd",
-	"marksman"
+	"marksman",
 })
 
 vim.keymap.set("n", "<Leader>lf", vim.lsp.buf.format)
@@ -142,11 +143,11 @@ vim.keymap.set("n", "<leader>xd", function()
 	vim.cmd.copen()
 end, { desc = "Add diagnostics to quickfix" })
 
-vim.api.nvim_create_autocmd('LspAttach', {
-  callback = function(args)
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = args.buf })
-    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { buffer = args.buf })
-  end,
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(args)
+		vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = args.buf })
+		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = args.buf })
+	end,
 })
 
 -- splits
@@ -169,7 +170,7 @@ require("catppuccin").setup({
 	custom_highlights = function(colors)
 		return {
 			FloatBorder = { fg = colors.pink },
-			Visual = { bg = colors.peach, fg = colors.crust },
+			Visual = { bg = colors.red, fg = colors.crust },
 			CursorLineNr = { fg = colors.pink },
 			IncSearch = { bg = colors.pink, fg = colors.crust },
 			DiagnosticUnderlineError = { style = { "undercurl" } },
@@ -182,16 +183,16 @@ require("catppuccin").setup({
 			BlinkCmpMenuSelection = { fg = colors.crust, bg = colors.pink },
 			TabLineSel = { fg = colors.crust, bg = colors.pink },
 			TabLine = { fg = colors.overlay0, bg = colors.surface0 },
-			MiniPickMatchCurrent = { bg = colors.peach, fg = colors.crust },
+			MiniPickMatchCurrent = { bg = colors.red, fg = colors.crust },
 			MiniPickPromptPrefix = { fg = colors.pink },
 			MiniPickPromptCaret = { fg = colors.pink },
+			MiniFilesTitleFocused = { bg = colors.red, fg = colors.base, style = { "bold" } },
+			MiniFilesTitle = { bg = colors.pink, fg = colors.base },
 		}
 	end,
 })
 vim.cmd.colorscheme("catppuccin-mocha")
 local colors = require("catppuccin.palettes").get_palette("mocha")
-
-
 
 -- treesitter
 local ts = require("nvim-treesitter")
@@ -203,26 +204,6 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
--- oil
-require("oil").setup({
-	default_file_explorer = true,
-	columns = { "icon", "permissions", "size" },
-	view_options = { show_hidden = true },
-	keymaps = {
-		["<C-h>"] = false,
-		["<C-l>"] = false,
-		["<C-d>"] = { "actions.select", opts = { horizontal = true } },
-		["<C-r>"] = "actions.refresh",
-	},
-})
-vim.keymap.set("n", "<Leader>e", function()
-	if vim.bo.filetype == "oil" then
-		require("oil.actions").close.callback()
-	else
-		vim.cmd("Oil")
-	end
-end)
-
 -- statusline
 local conditions = require("heirline.conditions")
 local utils = require("heirline.utils")
@@ -231,6 +212,7 @@ local bfr_seps = { "", "" }
 local char_missing = "•"
 local tab_hl = utils.get_highlight("Tabline")
 local tab_sel_hl = utils.get_highlight("TablineSel")
+vim.g.minifiles_open = false
 local mode_map = {
 	n = { "normal", colors.peach },
 	v = { "visual", colors.mauve },
@@ -549,9 +531,7 @@ local GitBranchPill = make_pill({ fg = colors.mauve, bg = slbg, bold = true }, {
 	end,
 
 	provider = function(self)
-		return pad_string(
-			self.branch and (#self.branch > 1 and self.branch or "?") or char_missing
-		)
+		return pad_string(self.branch and (#self.branch > 1 and self.branch or "?") or char_missing)
 	end,
 }, { right_sep = bfr_seps[2] })
 
@@ -722,11 +702,18 @@ local TablineBufferBlock = utils.surround(bfr_seps, function(self)
 	end
 end, { TablineFileNameBlock, TablineCloseButton, TablineSpacer() })
 
-local BufferLine = utils.make_buflist(
-	{ TablineBufferBlock, TablineSpacer() },
-	{ provider = " ", hl = { fg = colors.overlay0 } },
-	{ provider = " ", hl = { fg = colors.overlay0 } }
-)
+local BufferLine = {
+
+	utils.make_buflist(
+		{ TablineBufferBlock, TablineSpacer() },
+		{ provider = " ", hl = { fg = colors.overlay0 } },
+		{ provider = " ", hl = { fg = colors.overlay0 } }
+	),
+
+	condition = function()
+		return not vim.g.minifiles_open
+	end,
+}
 
 local WinBars = {}
 
@@ -782,6 +769,72 @@ require("blink.cmp").setup({
 			"fallback",
 		},
 	},
+})
+
+-- icons
+require("mini.icons").setup()
+
+-- files
+local files = require("mini.files")
+files.setup({
+	windows = {
+		preview = true,
+		width_focus = 50,
+		width_nofocus = 25,
+		width_preview = 100,
+	},
+})
+
+vim.api.nvim_create_autocmd("User", {
+	pattern = "MiniFilesExplorerOpen",
+	callback = function()
+		vim.g.minifiles_open = true
+	end,
+})
+
+vim.api.nvim_create_autocmd("User", {
+	pattern = "MiniFilesExplorerClose",
+	callback = function()
+		vim.g.minifiles_open = false
+	end,
+})
+
+vim.keymap.set("n", "<Leader>e", function()
+	if not files.close() then
+		files.open()
+	end
+end)
+
+vim.api.nvim_create_autocmd("User", {
+	pattern = "MiniFilesWindowUpdate",
+	callback = function(args)
+		local win_id = args.data.win_id
+		local config = vim.api.nvim_win_get_config(win_id)
+		if not config.title then
+			return
+		end
+
+		local is_focused = win_id == vim.api.nvim_get_current_win()
+
+		local source_hl = is_focused and "MiniFilesTitleFocused" or "MiniFilesTitle"
+		local sep_hl = source_hl .. "Sep"
+
+		local t = vim.api.nvim_get_hl(0, { name = source_hl, link = false })
+		local inverted = {
+			fg = t.bg and ("#%06x"):format(t.bg) or "NONE",
+			bg = t.fg and ("#%06x"):format(t.fg) or "NONE",
+		}
+		vim.api.nvim_set_hl(0, sep_hl, inverted)
+		if is_focused then
+			vim.api.nvim_set_hl(0, "MiniFilesBorderFocused", inverted)
+			vim.wo[win_id].winhighlight = "FloatBorder:MiniFilesBorderFocused"
+		end
+
+		table.insert(config.title, 1, { bfr_seps[1], sep_hl })
+		table.insert(config.title, { bfr_seps[2], sep_hl })
+
+		vim.api.nvim_win_set_config(win_id, config)
+	end,
 })
 
 -- diff
