@@ -805,38 +805,6 @@ vim.keymap.set("n", "<Leader>e", function()
 	end
 end)
 
-vim.api.nvim_create_autocmd("User", {
-	pattern = "MiniFilesWindowUpdate",
-	callback = function(args)
-		local win_id = args.data.win_id
-		local config = vim.api.nvim_win_get_config(win_id)
-		if not config.title then
-			return
-		end
-
-		local is_focused = win_id == vim.api.nvim_get_current_win()
-
-		local source_hl = is_focused and "MiniFilesTitleFocused" or "MiniFilesTitle"
-		local sep_hl = source_hl .. "Sep"
-
-		local t = vim.api.nvim_get_hl(0, { name = source_hl, link = false })
-		local inverted = {
-			fg = t.bg and ("#%06x"):format(t.bg) or "NONE",
-			bg = t.fg and ("#%06x"):format(t.fg) or "NONE",
-		}
-		vim.api.nvim_set_hl(0, sep_hl, inverted)
-		if is_focused then
-			vim.api.nvim_set_hl(0, "MiniFilesBorderFocused", inverted)
-			vim.wo[win_id].winhighlight = "FloatBorder:MiniFilesBorderFocused"
-		end
-
-		table.insert(config.title, 1, { bfr_seps[1], sep_hl })
-		table.insert(config.title, { bfr_seps[2], sep_hl })
-
-		vim.api.nvim_win_set_config(win_id, config)
-	end,
-})
-
 -- diff
 require("mini.diff").setup()
 
