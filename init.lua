@@ -188,6 +188,7 @@ require("catppuccin").setup({
 			MiniPickPromptCaret = { fg = colors.pink },
 			MiniFilesTitleFocused = { bg = colors.red, fg = colors.base, style = { "bold" } },
 			MiniFilesTitle = { bg = colors.pink, fg = colors.base },
+			MiniFilesBorderFocused = { fg = colors.red, bg = colors.base },
 		}
 	end,
 })
@@ -804,6 +805,41 @@ vim.keymap.set("n", "<Leader>e", function()
 		files.open()
 	end
 end)
+
+vim.api.nvim_create_autocmd("User", {
+	pattern = "MiniFilesWindowOpen",
+	callback = function(args)
+		local win_id = args.data.win_id
+
+		local config = vim.api.nvim_win_get_config(win_id)
+		vim.api.nvim_win_set_config(win_id, config)
+	end,
+})
+
+vim.api.nvim_create_autocmd("User", {
+	pattern = "MiniFilesWindowUpdate",
+	callback = function(args)
+		local config = vim.api.nvim_win_get_config(args.data.win_id)
+		local state = files.get_explorer_state()
+		if not state then
+			return
+		end
+		local focused_path = state.branch[state.depth_focus]
+		local is_focused = false
+		for _, w in ipairs(state.windows) do
+			if w.win_id == args.data.win_id then
+				is_focused = w.path == focused_path
+				break
+			end
+		end
+
+		local border_hl = is_focused and "MiniFilesBorderFocused" or "MiniFilesBorder"
+		vim.wo[args.data.win_id].winhighlight = "NormalFloat:MiniFilesNormal,FloatBorder:"
+			.. border_hl
+			.. ",FloatTitle:MiniFilesTitle"
+		vim.api.nvim_win_set_config(args.data.win_id, config)
+	end,
+})
 
 -- diff
 require("mini.diff").setup()
