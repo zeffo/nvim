@@ -130,6 +130,7 @@ vim.lsp.enable({
 	"rust_analyzer",
 	"clangd",
 	"marksman",
+	"svelte",
 })
 
 vim.keymap.set("n", "<Leader>lf", vim.lsp.buf.format)
@@ -786,6 +787,8 @@ files.setup({
 	},
 })
 
+local win_height_clamp = 0.618
+
 vim.api.nvim_create_autocmd("User", {
 	pattern = "MiniFilesExplorerOpen",
 	callback = function()
@@ -807,20 +810,11 @@ vim.keymap.set("n", "<Leader>e", function()
 end)
 
 vim.api.nvim_create_autocmd("User", {
-	pattern = "MiniFilesWindowOpen",
-	callback = function(args)
-		local win_id = args.data.win_id
-
-		local config = vim.api.nvim_win_get_config(win_id)
-		vim.api.nvim_win_set_config(win_id, config)
-	end,
-})
-
-vim.api.nvim_create_autocmd("User", {
 	pattern = "MiniFilesWindowUpdate",
 	callback = function(args)
 		local config = vim.api.nvim_win_get_config(args.data.win_id)
 		local state = files.get_explorer_state()
+		config.height = math.min(vim.api.nvim_buf_line_count(args.data.buf_id) + 1, math.floor(vim.o.lines * win_height_clamp))
 		if not state then
 			return
 		end
@@ -851,8 +845,8 @@ require("mini.git").setup()
 local pick = require("mini.pick")
 
 local win_config = function()
-	local height = math.floor(0.618 * vim.o.lines)
-	local width = math.floor(0.618 * vim.o.columns)
+	local height = math.floor(win_height_clamp * vim.o.lines)
+	local width = math.floor(win_height_clamp * vim.o.columns)
 	return {
 		anchor = "NW",
 		height = height,
